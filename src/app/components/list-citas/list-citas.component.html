@@ -1,7 +1,32 @@
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title text-center">
+        <h5 *ngIf="listadoCitas.length > 0" class="card-title text-center">
             Listado de Cita
         </h5>
+        <h5 *ngIf="listadoCitas.length == 0" class="card-title text-center">
+            No hay citas disponibles
+        </h5>
+        <table *ngIf="listadoCitas.length > 0" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Sintoma</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cita of listadoCitas; let i = index">
+                    <td>{{cita.name}}</td>
+                    <td>{{cita.date}}</td>
+                    <td>{{cita.time}}</td>
+                    <td>{{cita.symptom}}</td>
+                    <td>
+                        <button class="btn btn-danger" (click)="delete(i)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

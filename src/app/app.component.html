@@ -2,10 +2,10 @@
   <div class="text-center title">APLICACION DE CITAS</div>
   <div class="row mt-3">
     <div class="col-md-6">
-      <app-create-cita></app-create-cita>
+      <app-create-cita (nuevaCita)="agregarCita($event)"></app-create-cita>
     </div>
     <div class="col-md-6">
-      <app-list-citas></app-list-citas>
+      <app-list-citas [listadoCitas]="listCitas" (deleteCita)="delete($event)" ></app-list-citas>
     </div>
   </div>
 </div>

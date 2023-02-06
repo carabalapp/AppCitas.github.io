@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 
 @Component({
@@ -15,6 +15,9 @@ export class CreateCitaComponent implements OnInit {
     time: ['', Validators.required],
     symptom: ['', Validators.required],
   })
+  @Output() nuevaCita = new EventEmitter<any>();
+
+  citas: any[] = []
 
 
   constructor(private fb: FormBuilder) { }
@@ -23,9 +26,8 @@ export class CreateCitaComponent implements OnInit {
     
   }
 
-
   submitCita(){
-    console.log('Estas son las citas', this.citasForm);
+    this.nuevaCita.emit(this.citasForm.value);
   }
 
 }
